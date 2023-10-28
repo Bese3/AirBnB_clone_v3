@@ -20,7 +20,7 @@ def get_city_places(id):
     return jsonify([place.to_dict() for place in places])
 
 
-@app_views.route('places/<d>', methods=['GET'],
+@app_views.route('places/<id>', methods=['GET'],
                  strict_slashes=False)
 def get_place(id):
     """get place by thier id"""
@@ -71,7 +71,7 @@ def update_place(place_id):
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
-    if not request.Json:
+    if not request.json:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     data = {k: v for k, v in request.get_json().items()
             if k not in ['id', 'user_id', 'city_id', 'created_at',
