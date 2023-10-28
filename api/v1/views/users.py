@@ -42,7 +42,7 @@ def new_user():
     if not request.json:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'email' not in request.json:
-        return make_response(jsonify({"error": "Missing email"}, 400))
+        return make_response(jsonify({"error": "Missing email"}), 400)
     if 'password' not in request.json:
         return make_response(jsonify({"error": "Missing password"}), 400)
     data = request.get_json()
