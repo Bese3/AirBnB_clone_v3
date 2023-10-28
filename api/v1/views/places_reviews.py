@@ -50,7 +50,7 @@ def create_review(place_id):
     place = storage.get(Place, place_id)
     if place is None:
         abort(404)
-    if not request.get_json:
+    if not request.json:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     data = request.get_json()
     if 'user_id' not in data:
@@ -75,7 +75,7 @@ def update_review(review_id):
     if review is None:
         abort(404)
 
-    if not request.is_json:
+    if not request.json:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
     data = request.get_json()
