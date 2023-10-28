@@ -10,7 +10,8 @@ from models.user import User
 from models.review import Review
 
 
-@app_views.route('/places/<place_id>/reviews', methods=['GET'])
+@app_views.route('/places/<place_id>/reviews', methods=['GET'],
+                 strict_slashes=False)
 def get_all_reviwes(place_id):
     """Retrieves the list of all Review objects of a Place"""
     place = storage.get(Place, place_id)
